@@ -11,6 +11,7 @@
 var tableData = data;
 // YOUR CODE HERE!
 
+// Data columns
 var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
 console.log(tableData);
