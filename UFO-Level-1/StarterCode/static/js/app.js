@@ -7,20 +7,18 @@
 // Make sure you have a column for `date/time`, `city`, 
 // `state`, `country`, `shape`, and `comment` at the very least.
 
-// Use a date form in your HTML document and write JavaScript code 
-// that will listen for events and search through the `date/time` 
-// column to find rows that match user input.
-
 // from data.js
 var tableData = data;
 // YOUR CODE HERE!
+
+var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
 console.log(tableData);
 
 // Get a reference to the table body
 var tbody = d3.select("tbody");
 
-// Looping through the UFO table values for each column
+// Looping through each UFO object in the data array
 // Creating the empty rows for tableData
 tableData.forEach((ufoSightings) => {
     console.log(ufoSightings);
@@ -34,16 +32,22 @@ tableData.forEach((ufoSightings) => {
     });
 });
 
+// Use a date form in your HTML document and write JavaScript code 
+// that will listen for events and search through the `date/time` 
+// column to find rows that match user input.
+
 // Select the button
 var button = d3.select("#filter-btn");
 
+// Select the form
+var form = d3.select("#form");
+
 // Create event handlers
 button.on("click", runEnter);
+form.on("submit", runEnter);
 
 // Complete the event handler function for the form
 function runEnter() {
-
-
 
     // Prevent the page from refreshing
     d3.event.preventDefault();
@@ -59,7 +63,7 @@ function runEnter() {
     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
     console.log(filteredData);
 
-    // Adding tag
+    // 
     tbody.html("");
 
     // 
