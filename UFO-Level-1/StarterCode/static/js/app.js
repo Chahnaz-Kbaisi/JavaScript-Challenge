@@ -1,8 +1,4 @@
-// from data.js
-var tableData = data;
-// YOUR CODE HERE!
-
-console.log(tableData);
+// Level 1: Automatic Table and Date Search (Required)
 
 // Using the UFO dataset provided in the form of an array of JavaScript objects, 
 // write code that appends a table to your web page and 
@@ -14,6 +10,12 @@ console.log(tableData);
 // Use a date form in your HTML document and write JavaScript code 
 // that will listen for events and search through the `date/time` 
 // column to find rows that match user input.
+
+// from data.js
+var tableData = data;
+// YOUR CODE HERE!
+
+console.log(tableData);
 
 // Get a reference to the table body
 var tbody = d3.select("tbody");
@@ -59,6 +61,8 @@ function runEnter() {
 
     // Adding tag
     tbody.html("");
+
+    // 
 }
 
 
