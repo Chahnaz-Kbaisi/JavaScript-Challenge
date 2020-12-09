@@ -39,6 +39,8 @@ tableData.forEach((ufoSightings) => {
     });
 });
 
+
+
 // Select the button
 var button = d3.select("#filter-btn");
 
@@ -52,7 +54,7 @@ function runEnter() {
     d3.event.preventDefault();
 
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#input");
+    var inputElement = d3.select("input");
 
     // Get the value property of hte input element
     var inputValue = inputElement.property("value");
