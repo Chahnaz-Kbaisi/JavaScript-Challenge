@@ -59,7 +59,7 @@ function runEnter() {
     console.log(inputValue);
 
     // Use the form input to filter the data by datetime
-    var filterData = tableData.filter((sighting) => sighting.datetime === inputValue ||
+    var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue ||
         sighting.city === inputValue ||
         sighting.state === inputValue ||
         sighting.country === inputValue ||
@@ -69,10 +69,18 @@ function runEnter() {
     // Clear out current contents in the table
     tbody.html("");
 
-
-
-
-
-}
+    // If results have no match
+    if (filteredData.length === 0) {
+        tbody.text(`no matching for ${inputValue}.`);
+    }
+    else {
+        filteredData.forEach((ufoSightings) => {
+            var row = tbody.append("tr");
+            Object.entries(ufoSightings).forEach(([key, value]) => {
+                cell.text(value);
+            });
+        });
+    };
+};
 
 
