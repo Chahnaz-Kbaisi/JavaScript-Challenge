@@ -48,9 +48,6 @@ button.on("click", runEnter);
 // complete the event handler from refresing
 function runEnter() {
 
-    // Clear out current contents in the table
-    tbody.html("");
-
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
@@ -67,6 +64,11 @@ function runEnter() {
         sighting.state === inputValue ||
         sighting.country === inputValue ||
         sighting.shape === inputValue);
+    console.log(filterData);
+
+    // Clear out current contents in the table
+    tbody.html("");
+
 
 
 
