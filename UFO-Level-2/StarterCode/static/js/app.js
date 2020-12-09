@@ -12,6 +12,7 @@
 //   4. `country`
 //   5. `shape`
 
+// Advanced Search Panel
 
 // from data.js
 var tableData = data;
@@ -22,5 +23,18 @@ var tbody = d3.select("tbody");
 // Data columns
 var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
+// Looping throught each UFO Object in the data array
+// Adding the table data of UFO Sightings when loading the page
+tableData.forEach((ufoSightings) => {
+    console.log(ufoSightings);
+    var row = tbody.append("tr");
+    // Using the Object.entries to console.log to populate each UFO Sighting object:
+    Object.entries(ufoSightings).forEach(([key, value]) => {
+        console.log(key, value);
+        // Appending a cell to the row for each value
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
 
-// Advanced Search Panel
+
