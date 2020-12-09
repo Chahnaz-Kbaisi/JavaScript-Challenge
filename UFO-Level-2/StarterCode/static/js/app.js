@@ -23,6 +23,8 @@ var tbody = d3.select("tbody");
 // Data columns
 var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
+console.log(tableData);
+
 // Looping throught each UFO Object in the data array
 // Adding the table data of UFO Sightings when loading the page
 tableData.forEach((ufoSightings) => {
@@ -36,5 +38,30 @@ tableData.forEach((ufoSightings) => {
         cell.text(value);
     });
 });
+
+// Select the button
+var button = d3.select("#filter-btn");
+
+// Create event handler
+button.on("click", runEnter);
+
+// complete the event handler from refresing
+function runEnter() {
+
+    // Clear out current contents in the table
+    tbody.html("");
+
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // Select the input element and get the raw HTML node
+    var inputElement = d3.select("#input");
+
+    // Get the value property of hte input element
+    var inputValue = inputElement.property("value");
+
+
+
+}
 
 
