@@ -59,6 +59,15 @@ function runEnter() {
 
     // Get the value property of hte input element
     var inputValue = inputElement.property("value");
+    console.log(inputValue);
+
+    // Use the form input to filter the data by datetime
+    var filterData = tableData.filter((sighting) => sighting.datetime === inputValue ||
+        sighting.city === inputValue ||
+        sighting.state === inputValue ||
+        sighting.country === inputValue ||
+        sighting.shape === inputValue);
+
 
 
 
