@@ -59,8 +59,18 @@ function runEnter() {
     // Get the value property of hte input element
     var inputValue = inputElement.property("value");
     console.log(inputValue);
+    // var inputValueCity = d3.select("#city").property("value");
+    // var inputValueState = d3.select("#state").property("value");
+    // var inputValueCountry = d3.select("#country").property("value");
+    // var inputValueShape = d3.select("shape").property("value");
 
     // Use the form input to filter the data by datetime
+    // var filteredData = tableData.filter((sighting) => sighting.datatime === inputValue);
+    // var filteredData = filteredData.filter((sighting) => sighting.city === inputValueCity);
+    // var filteredData = filteredData.filter((sighting) => sighting.state === inputValueState);
+    // var filteredData = filteredData.filter((sighting) => sighting.country === inputValueCountry);
+    // var filteredData = filteredData.filter((sighting) => sighting.shape === inputValueShape);
+
     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue ||
         sighting.city === inputValue ||
         sighting.state === inputValue ||
