@@ -11,9 +11,6 @@
 var tableData = data;
 // YOUR CODE HERE!
 
-// Data columns
-// var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
-
 console.log(tableData);
 
 // Get a reference to the table body
@@ -40,7 +37,13 @@ tableData.forEach((ufoSightings) => {
 
 // Select the button
 var button = d3.select("#filter-btn");
+
+// Button to return to full table
 var fullTable = d3.select("full-btn");
+// Select the Full table return
+fullTable.on("click", function () {
+    filteredData(tableData);
+});
 
 // Select the form
 var form = d3.select("#form");

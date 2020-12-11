@@ -12,80 +12,88 @@
 //   4. `country`
 //   5. `shape`
 
+
+
 // Advanced Search Panel
 
-// from data.js
-var tableData = data;
+// // from data.js
+// var tableData = data;
 
-// YOUR CODE HERE!
-var tbody = d3.select("tbody");
+// // YOUR CODE HERE!
+// var tbody = d3.select("tbody");
 
-// Data columns
-// var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
+// // Data columns
+// // var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
-console.log(tableData);
+// console.log(tableData);
 
-buildTables(tableData);
-
-
-
-function buildTables(ufoData) {
-    tbody.html("")
-    // Looping throught each UFO Object in the data array
-    // Adding the table data of UFO Sightings when loading the page
-    ufoData.forEach((ufoSightings) => {
-        console.log(ufoSightings);
-        var row = tbody.append("tr");
-        // Using the Object.entries to console.log to populate each UFO Sighting object:
-        Object.entries(ufoSightings).forEach(([key, value]) => {
-            console.log(key, value);
-            // Appending a cell to the row for each value
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
-};
+// buildTables(tableData);
 
 
 
+// function buildTables(ufoData) {
+//     tbody.html("")
+//     // Looping throught each UFO Object in the data array
+//     // Adding the table data of UFO Sightings when loading the page
+//     ufoData.forEach((ufoSightings) => {
+//         console.log(ufoSightings);
+//         var row = tbody.append("tr");
+//         // Using the Object.entries to console.log to populate each UFO Sighting object:
+//         Object.entries(ufoSightings).forEach(([key, value]) => {
+//             console.log(key, value);
+//             // Appending a cell to the row for each value
+//             var cell = row.append("td");
+//             cell.text(value);
+//         });
+//     });
+// };
 
-// Select the button
-var button = d3.select("#filter-btn");
 
-// Select the form
-var form = d3.select("form");
 
-// Create event handler
-button.on("click", runEnter);
-form.on("submit", runEnter);
 
-// complete the event handler from refresing
-function runEnter() {
+// // Select the button
+// var button = d3.select("#filter-btn");
 
-    // Prevent the page from refreshing
-    d3.event.preventDefault();
+// // Button to return to full table
+// var fullTable = d3.select("full-btn");
 
-    // Select the input element and get the raw HTML node
-    var inputElement = d3.selectAll(".form-control");
-    // var filterList = [];
-    // var filterFields = [];
-    // Get the value property of hte input element
-    for (i = 0; i < inputElement.length; i++) {
-        if (filteredData.length === 0) {
-            tbody.text(`no matching for ${inputValue}.`);
-        }
-        else {
-            var inputValue = inputElement[i].property("value");
-            var inputField = inputElement[i].attr("id");
-            // filterList.append(inputValue)
-            // filterFields.append(inputField)
-            console.log(inputValue);
-            var filteredData = filteredData.filter((sighting) => sighting[inputField] === inputValue);
-            console.log(filteredData);
-        };
-    };
+// // Select the form
+// var form = d3.select("form");
+// fullTable.on("click", function(){
+//     ufoData()
+// })
 
-    buildTables(filteredData);
+// // Create event handler
+// button.on("click", runEnter);
+// form.on("submit", runEnter);
+
+// // complete the event handler from refresing
+// function runEnter() {
+
+//     // Prevent the page from refreshing
+//     d3.event.preventDefault();
+
+//     // Select the input element and get the raw HTML node
+//     var inputElement = d3.selectAll(".form-control");
+//     // var filterList = [];
+//     // var filterFields = [];
+//     // Get the value property of hte input element
+//     for (i = 0; i < inputElement.length; i++) {
+//         if (filteredData.length === 0) {
+//             tbody.text(`no matching for ${inputValue}.`);
+//         }
+//         else {
+//             var inputValue = inputElement[i].property("value");
+//             var inputField = inputElement[i].attr("id");
+//             // filterList.append(inputValue)
+//             // filterFields.append(inputField)
+//             console.log(inputValue);
+//             var filteredData = filteredData.filter((sighting) => sighting[inputField] === inputValue);
+//             console.log(filteredData);
+//         };
+//     };
+
+//     buildTables(filteredData);
 
 
 
