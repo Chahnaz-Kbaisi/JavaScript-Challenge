@@ -21,31 +21,43 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 // Data columns
-var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
+// var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
 console.log(tableData);
 
-// Looping throught each UFO Object in the data array
-// Adding the table data of UFO Sightings when loading the page
-tableData.forEach((ufoSightings) => {
-    console.log(ufoSightings);
-    var row = tbody.append("tr");
-    // Using the Object.entries to console.log to populate each UFO Sighting object:
-    Object.entries(ufoSightings).forEach(([key, value]) => {
-        console.log(key, value);
-        // Appending a cell to the row for each value
-        var cell = row.append("td");
-        cell.text(value);
+buildTables(tableData);
+
+
+
+function buildTables(ufoData) {
+    tbody.html("")
+    // Looping throught each UFO Object in the data array
+    // Adding the table data of UFO Sightings when loading the page
+    ufoData.forEach((ufoSightings) => {
+        console.log(ufoSightings);
+        var row = tbody.append("tr");
+        // Using the Object.entries to console.log to populate each UFO Sighting object:
+        Object.entries(ufoSightings).forEach(([key, value]) => {
+            console.log(key, value);
+            // Appending a cell to the row for each value
+            var cell = row.append("td");
+            cell.text(value);
+        });
     });
-});
+};
+
 
 
 
 // Select the button
 var button = d3.select("#filter-btn");
 
+// Select the form
+var form = d3.select("form");
+
 // Create event handler
 button.on("click", runEnter);
+form.on("submit", runEnter);
 
 // complete the event handler from refresing
 function runEnter() {
@@ -54,11 +66,29 @@ function runEnter() {
     d3.event.preventDefault();
 
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("input");
-
+    var inputElement = d3.selectAll(".form-control");
+    // var filterList = [];
+    // var filterFields = [];
     // Get the value property of hte input element
-    var inputValue = inputElement.property("value");
-    console.log(inputValue);
+    for (i = 0; i < inputElement.length; i++) {
+        if (filteredData.length === 0) {
+            tbody.text(`no matching for ${inputValue}.`);
+        }
+        else {
+            var inputValue = inputElement[i].property("value");
+            var inputField = inputElement[i].attr("id");
+            // filterList.append(inputValue)
+            // filterFields.append(inputField)
+            console.log(inputValue);
+            var filteredData = filteredData.filter((sighting) => sighting[inputField] === inputValue);
+            console.log(filteredData);
+        };
+    };
+
+    buildTables(filteredData);
+
+
+
     // var inputValueCity = d3.select("#city").property("value");
     // var inputValueState = d3.select("#state").property("value");
     // var inputValueCountry = d3.select("#country").property("value");
@@ -71,28 +101,30 @@ function runEnter() {
     // var filteredData = filteredData.filter((sighting) => sighting.country === inputValueCountry);
     // var filteredData = filteredData.filter((sighting) => sighting.shape === inputValueShape);
 
-    var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue ||
-        sighting.city === inputValue ||
-        sighting.state === inputValue ||
-        sighting.country === inputValue ||
-        sighting.shape === inputValue);
-    console.log(filterData);
 
-    // Clear out current contents in the table
-    tbody.html("");
 
-    // If results have no match
-    if (filteredData.length === 0) {
-        tbody.text(`no matching for ${inputValue}.`);
-    }
-    else {
-        filteredData.forEach((ufoSightings) => {
-            var row = tbody.append("tr");
-            Object.entries(ufoSightings).forEach(([key, value]) => {
-                cell.text(value);
-            });
-        });
-    };
+    //     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue ||
+    //         sighting.city === inputValue ||
+    //         sighting.state === inputValue ||
+    //         sighting.country === inputValue ||
+    //         sighting.shape === inputValue);
+    //     console.log(filterData);
+
+    //     // Clear out current contents in the table
+    //     tbody.html("");
+
+    //     // If results have no match
+    //     if (filteredData.length === 0) {
+    //         tbody.text(`no matching for ${inputValue}.`);
+    //     }
+    //     else {
+    //         // filteredData.forEach((ufoSightings) => {
+    //         //     var row = tbody.append("tr");
+    //         //     Object.entries(ufoSightings).forEach(([key, value]) => {
+    //         //         cell.text(value);
+    //         //     });
+    //         // });
+    //     };
 };
 
 

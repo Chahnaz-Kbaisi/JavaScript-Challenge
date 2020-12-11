@@ -12,7 +12,7 @@ var tableData = data;
 // YOUR CODE HERE!
 
 // Data columns
-var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
+// var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
 
 console.log(tableData);
 
@@ -40,6 +40,7 @@ tableData.forEach((ufoSightings) => {
 
 // Select the button
 var button = d3.select("#filter-btn");
+var fullTable = d3.select("full-btn");
 
 // Select the form
 var form = d3.select("#form");
