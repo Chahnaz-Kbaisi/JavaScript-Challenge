@@ -12,127 +12,114 @@
 //   4. `country`
 //   5. `shape`
 
+// from data.js
+var tableData = data;
+// YOUR CODE HERE!
 
+console.log(tableData);
 
-// Advanced Search Panel
+// Get a reference to the table body
+var tbody = d3.select("tbody");
 
-// // from data.js
-// var tableData = data;
+// Loop Through each UFO`data` and console.log each ufo - sighting object
+// Creating the empty rows for tableData
+tableData.forEach((ufoSightings) => {
+    console.log(ufoSightings);
+    // Using d3 to append one table row `tr` for each ufo-sighting object
+    var row = tbody.append("tr");
+    // Using the `Object.entries` to console.log each UFO Sighting object
+    Object.entries(ufoSightings).forEach(([key, value]) => {
+        console.log(key, value);
+        // Appending a cell to the row for each value
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
 
-// // YOUR CODE HERE!
-// var tbody = d3.select("tbody");
+// Select the button
+var button = d3.select("#filter-btn");
 
-// // Data columns
-// // var columns = ["datetime", "city", "state", "shape", "durationMinutes", "comments"]
+// Button to return to full table
+var fullTable = d3.select("full-btn");
+// Select the Full table return
+fullTable.on("click", function () {
+    filteredData(tableData);
+});
 
-// console.log(tableData);
+// Select the form
+var form = d3.select("#form");
 
-// buildTables(tableData);
+// Create event handlers
+button.on("click", runEnter);
+form.on("submit", runEnter);
 
+// Complete the event handler function for the form
+function runEnter() {
 
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
 
-// function buildTables(ufoData) {
-//     tbody.html("")
-//     // Looping throught each UFO Object in the data array
-//     // Adding the table data of UFO Sightings when loading the page
-//     ufoData.forEach((ufoSightings) => {
-//         console.log(ufoSightings);
-//         var row = tbody.append("tr");
-//         // Using the Object.entries to console.log to populate each UFO Sighting object:
-//         Object.entries(ufoSightings).forEach(([key, value]) => {
-//             console.log(key, value);
-//             // Appending a cell to the row for each value
-//             var cell = row.append("td");
-//             cell.text(value);
-//         });
-//     });
-// };
+    // Selecting the input elements and getting the raw HTML node for all filters
+    var inputElement = d3.selectAll(".form-control");
+    var inputCity = d3.select("#city");
+    var inputState = d3.select("#state");
+    var inputCountry = d3.select("#country");
+    var inputShape = d3.select("#shape");
 
+    // Getting the value property for all input elements
+    var inputValue = inputElement.property("value");
+    console.log(inputValue);
+    var inputValueCity = inputCity.property("value");
+    console.log(inputValueCity);
+    var inputValueState = inputState.property("value");
+    console.log(inputValueState);
+    var inputValueCountry = inputCountry.property("value");
+    console.log(inputValueCountry);
+    var inputValueShape = inputShape.property("value");
+    console.log(inputValueShape);
 
-
-
-// // Select the button
-// var button = d3.select("#filter-btn");
-
-// // Button to return to full table
-// var fullTable = d3.select("full-btn");
-
-// // Select the form
-// var form = d3.select("form");
-// fullTable.on("click", function(){
-//     ufoData()
-// })
-
-// // Create event handler
-// button.on("click", runEnter);
-// form.on("submit", runEnter);
-
-// // complete the event handler from refresing
-// function runEnter() {
-
-//     // Prevent the page from refreshing
-//     d3.event.preventDefault();
-
-//     // Select the input element and get the raw HTML node
-//     var inputElement = d3.selectAll(".form-control");
-//     // var filterList = [];
-//     // var filterFields = [];
-//     // Get the value property of hte input element
-//     for (i = 0; i < inputElement.length; i++) {
-//         if (filteredData.length === 0) {
-//             tbody.text(`no matching for ${inputValue}.`);
-//         }
-//         else {
-//             var inputValue = inputElement[i].property("value");
-//             var inputField = inputElement[i].attr("id");
-//             // filterList.append(inputValue)
-//             // filterFields.append(inputField)
-//             console.log(inputValue);
-//             var filteredData = filteredData.filter((sighting) => sighting[inputField] === inputValue);
-//             console.log(filteredData);
-//         };
-//     };
-
-//     buildTables(filteredData);
-
-
-
-    // var inputValueCity = d3.select("#city").property("value");
-    // var inputValueState = d3.select("#state").property("value");
-    // var inputValueCountry = d3.select("#country").property("value");
-    // var inputValueShape = d3.select("shape").property("value");
+    // Assigning filteredData to tableData
+    var filteredData = tableData;
+    console.log(filteredData);
 
     // Use the form input to filter the data by datetime
-    // var filteredData = tableData.filter((sighting) => sighting.datatime === inputValue);
-    // var filteredData = filteredData.filter((sighting) => sighting.city === inputValueCity);
-    // var filteredData = filteredData.filter((sighting) => sighting.state === inputValueState);
-    // var filteredData = filteredData.filter((sighting) => sighting.country === inputValueCountry);
-    // var filteredData = filteredData.filter((sighting) => sighting.shape === inputValueShape);
+    if (inputValue != "") {
+        filteredData = filteredData.filter((sighting) => sighting.datetime === inputValue);
+    };
+    if (inputValueCity != "") {
+        filteredData = filteredData.filter((sighting) => sighting.city === inputValueCity);
+    };
+    if (inputValueState != "") {
+        filteredData = filteredData.filter((sighting) => sighting.state === inputValueState);
+    };
+    if (inputValueCountry != "") {
+        filteredData = filteredData.filter((sighting) => sighting.country === inputValueCountry);
+    };
+    if (inputValueShape != "") {
+        filteredData = filteredData.filter((sighting) => sighting.shape === inputValueShape);
+    };
 
+    //  Get a reference to the table body
+    var tbody = d3.select("tbody");
 
+    // Clear out current contents in the table
+    tbody.html("");
 
-    //     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue ||
-    //         sighting.city === inputValue ||
-    //         sighting.state === inputValue ||
-    //         sighting.country === inputValue ||
-    //         sighting.shape === inputValue);
-    //     console.log(filterData);
-
-    //     // Clear out current contents in the table
-    //     tbody.html("");
-
-    //     // If results have no match
-    //     if (filteredData.length === 0) {
-    //         tbody.text(`no matching for ${inputValue}.`);
-    //     }
-    //     else {
-    //         // filteredData.forEach((ufoSightings) => {
-    //         //     var row = tbody.append("tr");
-    //         //     Object.entries(ufoSightings).forEach(([key, value]) => {
-    //         //         cell.text(value);
-    //         //     });
-    //         // });
-    //     };
+    // If results have no match
+    if (filteredData.length === 0) {
+        tbody.text(`No matching for you search.`);
+    }
+    // For Matching results
+    else {
+        filteredData.forEach((ufoSightings) => {
+            var row = tbody.append("tr");
+            Object.entries(ufoSightings).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+            });
+        });
+    };
 };
+
 
 
