@@ -82,7 +82,7 @@ function runEnter() {
     var filteredData = tableData;
     console.log(filteredData);
 
-    // Use the form input to filter the data by datetime
+    // Use the form input to filter the data by datetime, city, state, country & shape
     if (inputValue != "") {
         filteredData = filteredData.filter((sighting) => sighting.datetime === inputValue);
     };
@@ -107,7 +107,7 @@ function runEnter() {
 
     // If results have no match
     if (filteredData.length === 0) {
-        tbody.text(`No matching for you search.`);
+        tbody.text(`No matching for your search.`);
     }
     // For Matching results
     else {
