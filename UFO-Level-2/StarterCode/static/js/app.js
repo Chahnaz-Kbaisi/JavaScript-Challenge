@@ -107,7 +107,7 @@ function runEnter() {
 
     // If results have no match
     if (filteredData.length === 0) {
-        tbody.text(`No matching for your search.`);
+        tbody.text(`No matches for your search.`);
     }
     // For Matching results
     else {
