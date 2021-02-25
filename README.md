@@ -51,6 +51,8 @@ You can handle this... right? The planet Earth needs to know what we have found!
   4. `country`
   5. `shape`
 
+![UFO-Level-2](https://github.com/Chahnaz-Kbaisi/JavaScript-DOM-Manipulation/blob/main/UFO-Level-2/StarterCode/ScreenShots/Part-2-Advanced-Search.png)
+
 - - -
 
 ### Dataset
