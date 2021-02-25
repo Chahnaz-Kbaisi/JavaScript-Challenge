@@ -37,6 +37,8 @@ You can handle this... right? The planet Earth needs to know what we have found!
 
 * Use a date form in your HTML document and write JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
 
+![UFO-Level-1](https://github.com/Chahnaz-Kbaisi/JavaScript-DOM-Manipulation/blob/main/UFO-Level-1/StarterCode/ScreenShot/Part-1-Date-Filter.png)
+
 ### Level 2: Multiple Search Categories (Optional)
 [UFO-Level-2](https://github.com/Chahnaz-Kbaisi/JavaScript-Challenge/tree/main/UFO-Level-2/StarterCode)
 * Complete all of Level 1 criteria.
